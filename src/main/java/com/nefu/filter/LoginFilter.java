@@ -19,7 +19,7 @@ public class LoginFilter extends HttpFilter {
     public void doFilter(HttpServletRequest req, HttpServletResponse resp, FilterChain chain) throws IOException, ServletException {
         User bobo =(User) req.getSession().getAttribute("BOBO");
         if(bobo!=null && bobo.equals(new User(null,"BOBO","666666"))){
-            req.getRequestDispatcher("/welcome").forward(req,resp);
+            chain.doFilter(req,resp);
         }
         req.getRequestDispatcher("/login").forward(req,resp);
     }
